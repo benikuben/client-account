@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+
+  db:
+    image: postgres:14.1-alpine
+    container_name: postgres
+    restart: on-failure
+    volumes:
+      - 'client-account-data:/var/lib/postgresql/data'
+    environment:
+      POSTGRES_USER: benik
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: client-account
+    ports:
+      - "5432:5432"
+
+  client-account:
+    hostname: client-account
+    build:
+      context: .
+    container_name: client-account
+    restart: on-failure
+    depends_on:
+      - db
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_USER: benik
+      POSTGRES_PASSWORD: 123
+      POSTGRES_PORT: 5432
+    ports:
+      - "8080:8080"
+
+volumes:
+  client-account-data:
