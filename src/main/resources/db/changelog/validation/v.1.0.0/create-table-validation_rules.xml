@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="create-table-validation_rules" author="Veronika Kulieva">
+        <createTable tableName="validation_rules">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="source_id" type="bigint"/>
+            <column name="is_bank_id_required" type="boolean"/>
+            <column name="is_last_name_required" type="boolean"/>
+            <column name="is_first_name_required" type="boolean"/>
+            <column name="is_middle_name_required" type="boolean"/>
+            <column name="is_birthdate_required" type="boolean"/>
+            <column name="is_passport_required" type="boolean"/>
+            <column name="is_place_of_birth_required" type="boolean"/>
+            <column name="is_phone_required" type="boolean"/>
+            <column name="is_email_required" type="boolean"/>
+            <column name="is_residential_address_required" type="boolean"/>
+            <column name="is_registration_address_required" type="boolean"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="validation_rules" baseColumnNames="source_id"
+                                 constraintName="validation_rules_source_id_client_id"
+                                 referencedTableName="validation_source" referencedColumnNames="id" onDelete="CASCADE"/>
+
+        <rollback>
+            <dropTable tableName="validation_rules"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

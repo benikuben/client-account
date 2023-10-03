@@ -5,6 +5,7 @@ import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,11 +34,7 @@ public class ErrorHandlingControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public List<ErrorResponse> handleConstraintValidationException(ConstraintViolationException e) {
         List<ErrorResponse> response = e.getConstraintViolations().stream()
-                .map(
-                        error -> new ErrorResponse(
-                                error.getPropertyPath().toString() + " - " + error.getMessage()
-                        )
-                )
+                .map(error -> new ErrorResponse(error.getMessage()))
                 .toList();
         log.warn("ConstraintViolationException {}", response);
         return response;
@@ -48,7 +45,7 @@ public class ErrorHandlingControllerAdvice {
     @ResponseBody
     public List<ErrorResponse> handleMethodArgumentNotValid(MethodArgumentNotValidException e) {
         List<ErrorResponse> response = e.getBindingResult().getFieldErrors().stream()
-                .map(error -> new ErrorResponse(error.getField() + " - " + error.getDefaultMessage()))
+                .map(error -> new ErrorResponse(error.getDefaultMessage()))
                 .toList();
         log.warn("MethodArgumentNotValidException {}", response);
         return response;
@@ -78,6 +75,15 @@ public class ErrorHandlingControllerAdvice {
     public ErrorResponse handleClientAccountException(ClientAccountException e) {
         ErrorResponse response = new ErrorResponse(e.getMessage());
         log.warn("ClientAccountException {}", response);
+        return response;
+    }
+
+    @ExceptionHandler(MissingRequestHeaderException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorResponse handleMissingRequestHeaderException(MissingRequestHeaderException e) {
+        ErrorResponse response = new ErrorResponse(e.getHeaderName() + " is not specified");
+        log.warn("MissingRequestHeaderException {}", response);
         return response;
     }
 }

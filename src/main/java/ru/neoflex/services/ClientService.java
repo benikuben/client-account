@@ -2,7 +2,7 @@ package ru.neoflex.services;
 
 import org.springframework.transaction.annotation.Transactional;
 import ru.neoflex.dtos.SearchFilter;
-import ru.neoflex.models.Client;
+import ru.neoflex.models.client.Client;
 
 import java.util.List;
 

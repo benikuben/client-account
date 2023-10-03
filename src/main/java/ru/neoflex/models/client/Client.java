@@ -1,4 +1,4 @@
-package ru.neoflex.models;
+package ru.neoflex.models.client;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

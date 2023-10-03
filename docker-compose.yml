@@ -2,9 +2,9 @@ version: "3.8"
 
 services:
 
-  db:
+  client-account-db:
     image: postgres:14.1-alpine
-    container_name: postgres
+    container_name: client-account-db
     restart: on-failure
     volumes:
       - 'client-account-data:/var/lib/postgresql/data'
@@ -15,21 +15,51 @@ services:
     ports:
       - "5432:5432"
 
+  validation-db:
+    image: postgres:14.1-alpine
+    container_name: validation-db
+    restart: on-failure
+    volumes:
+      - 'validation-data:/var/lib/postgresql/data'
+    environment:
+      POSTGRES_USER: benik
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: validation
+    ports:
+      - "5433:5432"
+
   client-account:
     hostname: client-account
-    build:
-      context: .
+    image: client-account
     container_name: client-account
     restart: on-failure
     depends_on:
-      - db
+      - validation-db
+      - client-account-db
     environment:
-      POSTGRES_HOST: db
+      POSTGRES_HOST_CLIENT_ACCOUNT_DB: client-account-db
+      POSTGRES_HOST_VALIDATION_DB: validation-db
       POSTGRES_USER: benik
       POSTGRES_PASSWORD: 123
       POSTGRES_PORT: 5432
     ports:
       - "8080:8080"
 
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@pgadmin.com
+      PGADMIN_DEFAULT_PASSWORD: 123
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - "15432:80"
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    depends_on:
+      - client-account-db
+      - client-account
+
 volumes:
   client-account-data:
+  validation-data:
+  pgadmin:

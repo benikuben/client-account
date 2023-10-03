@@ -9,8 +9,8 @@ import org.springframework.beans.BeanUtils;
 import ru.neoflex.dtos.SearchFilter;
 import ru.neoflex.exceptions.ClientAccountException;
 import ru.neoflex.exceptions.NotFoundException;
-import ru.neoflex.models.Client;
-import ru.neoflex.repositories.ClientRepository;
+import ru.neoflex.models.client.Client;
+import ru.neoflex.repositories.client.ClientRepository;
 
 import java.time.LocalDate;
 import java.util.Optional;

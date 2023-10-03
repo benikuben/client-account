@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="insert-into-validation_source" author="Veronika Kulieva">
+        <insert tableName="validation_source">
+            <column name="id" value="1"/>
+            <column name="name" value="mail"/>
+        </insert>
+        <insert tableName="validation_source">
+            <column name="id" value="2"/>
+            <column name="name" value="mobile"/>
+        </insert>
+        <insert tableName="validation_source">
+            <column name="id" value="3"/>
+            <column name="name" value="bank"/>
+        </insert>
+        <insert tableName="validation_source">
+            <column name="id" value="4"/>
+            <column name="name" value="gosuslugi"/>
+        </insert>
+
+        <rollback>
+            <delete tableName="validation_rules">
+                <where>id between 1 and 4</where>
+            </delete>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

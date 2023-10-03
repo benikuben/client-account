@@ -9,13 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.neoflex.dtos.SearchFilter;
 import ru.neoflex.exceptions.ClientAccountException;
 import ru.neoflex.exceptions.NotFoundException;
-import ru.neoflex.models.Client;
-import ru.neoflex.repositories.ClientRepository;
+import ru.neoflex.models.client.Client;
+import ru.neoflex.repositories.client.ClientRepository;
 import ru.neoflex.util.QPredicates;
 
 import java.util.List;
 
-import static ru.neoflex.models.QClient.client;
+import static ru.neoflex.models.client.QClient.client;
 
 @Service
 @RequiredArgsConstructor
