@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="insert-into-validation_rules" author="Veronika Kulieva">
+        <insert tableName="validation_rules">
+            <column name="id" value="1"/>
+            <column name="source_id" value="1"/>
+            <column name="is_bank_id_required" value="false"/>
+            <column name="is_last_name_required" value="false"/>
+            <column name="is_first_name_required" value="true"/>
+            <column name="is_middle_name_required" value="false"/>
+            <column name="is_birthdate_required" value="false"/>
+            <column name="is_passport_required" value="false"/>
+            <column name="is_place_of_birth_required" value="false"/>
+            <column name="is_phone_required" value="false"/>
+            <column name="is_email_required" value="true"/>
+            <column name="is_residential_address_required" value="false"/>
+            <column name="is_registration_address_required" value="false"/>
+        </insert>
+
+        <insert tableName="validation_rules">
+            <column name="id" value="2"/>
+            <column name="source_id" value="2"/>
+            <column name="is_bank_id_required" value="false"/>
+            <column name="is_last_name_required" value="false"/>
+            <column name="is_first_name_required" value="false"/>
+            <column name="is_middle_name_required" value="false"/>
+            <column name="is_birthdate_required" value="false"/>
+            <column name="is_passport_required" value="false"/>
+            <column name="is_place_of_birth_required" value="false"/>
+            <column name="is_phone_required" value="true"/>
+            <column name="is_email_required" value="false"/>
+            <column name="is_residential_address_required" value="false"/>
+            <column name="is_registration_address_required" value="false"/>
+        </insert>
+
+        <insert tableName="validation_rules">
+            <column name="id" value="3"/>
+            <column name="source_id" value="3"/>
+            <column name="is_bank_id_required" value="true"/>
+            <column name="is_last_name_required" value="true"/>
+            <column name="is_first_name_required" value="true"/>
+            <column name="is_middle_name_required" value="true"/>
+            <column name="is_birthdate_required" value="true"/>
+            <column name="is_passport_required" value="true"/>
+            <column name="is_place_of_birth_required" value="false"/>
+            <column name="is_phone_required" value="false"/>
+            <column name="is_email_required" value="false"/>
+            <column name="is_residential_address_required" value="false"/>
+            <column name="is_registration_address_required" value="false"/>
+        </insert>
+
+        <insert tableName="validation_rules">
+            <column name="id" value="4"/>
+            <column name="source_id" value="4"/>
+            <column name="is_bank_id_required" value="true"/>
+            <column name="is_last_name_required" value="true"/>
+            <column name="is_first_name_required" value="true"/>
+            <column name="is_middle_name_required" value="true"/>
+            <column name="is_birthdate_required" value="true"/>
+            <column name="is_passport_required" value="true"/>
+            <column name="is_place_of_birth_required" value="true"/>
+            <column name="is_phone_required" value="true"/>
+            <column name="is_email_required" value="false"/>
+            <column name="is_residential_address_required" value="false"/>
+            <column name="is_registration_address_required" value="true"/>
+        </insert>
+
+        <rollback>
+            <delete tableName="validation_rules">
+                <where>id between 1 and 4</where>
+            </delete>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
