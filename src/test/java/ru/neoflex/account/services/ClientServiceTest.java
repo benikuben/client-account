@@ -11,6 +11,7 @@ import ru.neoflex.account.exceptions.ClientAccountException;
 import ru.neoflex.account.exceptions.NotFoundException;
 import ru.neoflex.account.models.client.Client;
 import ru.neoflex.account.repositories.client.ClientRepository;
+import ru.neoflex.account.services.impl.ClientServiceImpl;
 
 import java.time.LocalDate;
 import java.util.Optional;

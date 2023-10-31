@@ -14,28 +14,28 @@ import java.time.LocalDate;
 public class Client {
     @Schema(
             description = "bank id",
-            name = "bank id",
+            name = "bankId",
             example = "1"
     )
     private Long bankId;
     @Pattern(regexp = "^.{0}|([A-Za-z]{2,30})$", message = "Last name must contain from 2 to 30 Latin letters")
     @Schema(
             description = "last name",
-            name = "last name",
+            name = "lastName",
             example = "Ivanov"
     )
     private String lastName;
     @Pattern(regexp = "^.{0}|([A-Za-z]{2,30})$", message = "First name must contain from 2 to 30 Latin letters")
     @Schema(
             description = "first name",
-            name = "first name",
+            name = "firstName",
             example = "Ivan"
     )
     private String firstName;
     @Pattern(regexp = "^.{0}|([A-Za-z]{2,30})$", message = "Middle name must contain from 2 to 30 Latin letters")
     @Schema(
             description = "middle name",
-            name = "middle name",
+            name = "middleName",
             example = "Ivanovich"
     )
     private String middleName;
@@ -55,7 +55,7 @@ public class Client {
     private String passport;
     @Schema(
             description = "place of birth",
-            name = "place of birth",
+            name = "placeOfBirth",
             example = "Moscow"
     )
     private String placeOfBirth;
@@ -75,13 +75,13 @@ public class Client {
     private String email;
     @Schema(
             description = "residential address",
-            name = "residential address",
+            name = "residentialAddress",
             example = "Moscow"
     )
     private String residentialAddress;
     @Schema(
             description = "registration address",
-            name = "registration address",
+            name = "registrationAddress",
             example = "Moscow"
     )
     private String registrationAddress;

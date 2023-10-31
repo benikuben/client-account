@@ -1,4 +1,4 @@
-package ru.neoflex.account.services;
+package ru.neoflex.account.services.impl;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +8,10 @@ import org.springframework.validation.annotation.Validated;
 import ru.neoflex.account.dtos.Client;
 import ru.neoflex.account.dtos.SearchFilter;
 import ru.neoflex.account.models.validation.ValidationSource;
+import ru.neoflex.account.services.ClientAccountService;
+import ru.neoflex.account.services.ClientService;
+import ru.neoflex.account.services.ValidationService;
+import ru.neoflex.account.services.ValidationSourceService;
 import ru.neoflex.account.util.mappers.ClientMapper;
 
 import java.util.List;

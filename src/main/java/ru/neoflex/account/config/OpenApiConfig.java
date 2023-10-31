@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 @OpenAPIDefinition(
         info = @Info(
                 title = "ClientAccount Api",
-                description = "tariffs", version = "1.0.0",
+                description = "ClientAccount Api", version = "1.0.0",
                 contact = @Contact(
                         name = "Kulieva Veronika"
                 )

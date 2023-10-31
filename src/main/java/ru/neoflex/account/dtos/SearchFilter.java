@@ -7,19 +7,19 @@ import lombok.Data;
 public class SearchFilter {
     @Schema(
             description = "last name",
-            name = "last name",
+            name = "lastName",
             example = "Ivanov"
     )
     private String lastName;
     @Schema(
             description = "first name",
-            name = "first name",
+            name = "firstName",
             example = "Ivan"
     )
     private String firstName;
     @Schema(
             description = "middle name",
-            name = "middle name",
+            name = "middleName",
             example = "Ivanovich"
     )
     private String middleName;

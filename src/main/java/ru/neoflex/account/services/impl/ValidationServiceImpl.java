@@ -1,4 +1,4 @@
-package ru.neoflex.account.services;
+package ru.neoflex.account.services.impl;
 
 import jakarta.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
@@ -8,6 +8,7 @@ import ru.neoflex.account.dtos.Client;
 import ru.neoflex.account.exceptions.ClientValidationException;
 import ru.neoflex.account.models.validation.ValidationRules;
 import ru.neoflex.account.models.validation.ValidationSource;
+import ru.neoflex.account.services.ValidationService;
 
 import java.util.ArrayList;
 import java.util.List;
